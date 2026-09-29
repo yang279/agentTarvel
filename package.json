@@ -1,0 +1,18 @@
+{
+  "name": "travel-agent",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@11.5.0",
+  "scripts": {
+    "postinstall": "pnpm --filter @travel/shared build",
+    "dev": "concurrently -n api,web -c blue,green \"pnpm --filter @travel/api dev\" \"pnpm --filter @travel/web dev\"",
+    "build": "pnpm -r run build",
+    "typecheck": "pnpm --filter @travel/api typecheck && pnpm --filter @travel/web typecheck",
+    "prisma:generate": "pnpm --filter @travel/api prisma:generate",
+    "prisma:migrate": "pnpm --filter @travel/api prisma:migrate",
+    "agent:run": "pnpm --filter @travel/api agent:run"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
